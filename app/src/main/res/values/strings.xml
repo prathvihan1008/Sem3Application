@@ -2,4 +2,10 @@
     <string name="app_name">Sem3Application</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fast_forward">Fast Forward</string>
+    <string name="next_track">Next Track</string>
+    <string name="pause">Pause</string>
+    <string name="previous_track">Previous Track</string>
+    <string name="rewind">Rewind</string>
+    <string name="pull_up">pull up</string>
 </resources>

@@ -27,20 +27,123 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:layout_gravity="center|top"
+            android:contentDescription="@string/pull_up"
+
+
 
             android:src="@drawable/baseline_arrow_drop_up_24"/>
 
         <!-- Content of the bottom sheet -->
 
+        <!-- CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="110dp"
+
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+
+
+            app:cardCornerRadius="8dp"
+            android:background="@color/blue"
+
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:background="@color/blue"
+
+                >
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+
+
+            android:gravity="center"
+
+            android:background="@color/blue"
+            >
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/fast_rewind_24"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/rewind">
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/skip_previous_24"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/previous_track">
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/pause"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/pause">
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/skip_next_24"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/next_track">
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:src="@drawable/fast_forward_24"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/fast_forward">
+            </ImageButton>
+
+
+
+
 
             <!-- Content of the BottomSheet -->
 
         </LinearLayout>
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:progress="0"
+                    android:max="100"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+
+
+
+        </androidx.cardview.widget.CardView>
 
     </FrameLayout>
 
     <!-- Content of the bottom sheet -->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
