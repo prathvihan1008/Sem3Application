@@ -30,6 +30,7 @@
                 >
 
                 <ImageButton
+                    android:id="@+id/historybtn"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:src="@drawable/home"
@@ -59,7 +60,7 @@
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="160dp"
             android:layout_marginBottom="200dp">
             <!-- Content of the fragments will be dynamically loaded here -->
         </FrameLayout>

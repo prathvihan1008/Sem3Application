@@ -48,11 +48,11 @@ public class CustomSpinnerAdapter extends ArrayAdapter<String> {
             textTextView.setText(currentItem);
 
             // Set icon based on the current item
-            if (currentItem.equals("Track Walking")) {
+            if (currentItem.equals("Walking")) {
                 iconImageView.setImageResource(R.drawable.icon1);
-            } else if (currentItem.equals("Track Jogging")) {
+            } else if (currentItem.equals("Jogging")) {
                 iconImageView.setImageResource(R.drawable.icon2);
-            } else if (currentItem.equals("Track Biking")) {
+            } else if (currentItem.equals("Biking")) {
                 iconImageView.setImageResource(R.drawable.icon3);
             } else {
                 // Set a default icon or handle other cases

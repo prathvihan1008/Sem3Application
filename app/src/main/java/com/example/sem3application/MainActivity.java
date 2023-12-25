@@ -12,11 +12,16 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import com.example.sem3application.CustomSpinnerAdapter;
+import com.example.sem3application.fragments.BikeFragment;
 import com.example.sem3application.fragments.HistoryFragment;
+import com.example.sem3application.fragments.WalkFragment;
+import com.example.sem3application.fragments.JogFragment;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import java.util.Arrays;
 import java.util.List;
@@ -29,10 +34,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      // Load the initial fragment (HistoryFragment) dynamically
+        // Load the initial fragment (HistoryFragment) dynamically
         loadInitialFragment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+         ImageButton historybtn=findViewById(R.id.historybtn);//
+        historybtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadInitialFragment();
+                resetBottomSheet();
+            }
+        });
 
         if (toolbar != null)
             setSupportActionBar(toolbar);
@@ -78,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         Spinner customSpinner = findViewById(R.id.customSpinner);
 
-        List<String> spinnerItems = Arrays.asList("Track Walking", "Track Jogging", "Track Biking"); // Replace with your data
+        List<String> spinnerItems = Arrays.asList("Walking", "Jogging", "Biking"); // Replace with your data
 
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, spinnerItems);
         customSpinner.setAdapter(adapter);
@@ -107,17 +121,40 @@ public class MainActivity extends AppCompatActivity {
 
         // Commit the transaction
         fragmentTransaction.commit();
+        resetBottomSheet();
     }
+
+
 
 
     private void loadFragment(String selectedItem) {
-        // Implement fragment loading logic based on the selected item
-        // You may use a FragmentTransaction to replace the current fragment
-        // Example:
-        // FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        // transaction.replace(R.id.fragmentContainer, YourFragment.newInstance(selectedItem));
-        // transaction.addToBackStack(null);
-        // transaction.commit();
-    }
 
+        Fragment fragment;
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Create the appropriate fragment based on the selected item
+        if (selectedItem.equals("Walking")) {
+            fragment = new WalkFragment();
+        } else if (selectedItem.equals("Jogging")) {
+            fragment = new JogFragment();
+        } else if (selectedItem.equals("Biking")) {
+            fragment = new BikeFragment();
+        } else {
+            // Handle the default case or show an error
+            return;
+        }
+
+        // Replace the current fragment with the new one
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.addToBackStack(null); // Optional: Add to back stack for navigation
+        fragmentTransaction.commit();
+        resetBottomSheet();
+
+    }
+    private void resetBottomSheet() {
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.sheet));
+        bottomSheetBehavior.setPeekHeight(490);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
 }
