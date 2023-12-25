@@ -8,6 +8,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import android.view.Menu;
+
 
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +31,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView img;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,28 +45,43 @@ public class MainActivity extends AppCompatActivity {
         loadInitialFragment();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
 
-         ImageButton historybtn=findViewById(R.id.historybtn);//
+
+
+        ImageButton historybtn=findViewById(R.id.historybtn);//
         historybtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FrameLayout sheet = findViewById(R.id.sheet);
+                BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(sheet);
+
+
                 loadInitialFragment();
-                resetBottomSheet();
+                if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+               // resetBottomSheet();
             }
         });
 
-        if (toolbar != null)
-            setSupportActionBar(toolbar);
+
 
         ActionBar actionBar = getSupportActionBar();
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+        }
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(false);
         }
 
+
         FrameLayout sheet = findViewById(R.id.sheet);
         BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(sheet);
-        bottomSheetBehavior.setPeekHeight(490);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        bottomSheetBehavior.setPeekHeight(410);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
         img = findViewById(R.id.img);
 
         bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -88,6 +110,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         // Initialize the Spinner after the BottomSheetBehavior setup
 
         Spinner customSpinner = findViewById(R.id.customSpinner);
@@ -114,24 +139,36 @@ public class MainActivity extends AppCompatActivity {
     private void loadInitialFragment() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        FrameLayout sheet = findViewById(R.id.sheet);
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(sheet);
+
 
         // Replace the fragmentContainer with the HistoryFragment
         Fragment initialFragment = new HistoryFragment();
+
+
         fragmentTransaction.replace(R.id.fragmentContainer, initialFragment);
+
 
         // Commit the transaction
         fragmentTransaction.commit();
-        resetBottomSheet();
+        if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
+
     }
 
 
 
 
     private void loadFragment(String selectedItem) {
+        FrameLayout sheet = findViewById(R.id.sheet);
+
 
         Fragment fragment;
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
 
         // Create the appropriate fragment based on the selected item
         if (selectedItem.equals("Walking")) {
@@ -145,16 +182,16 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(sheet);
+
         // Replace the current fragment with the new one
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.addToBackStack(null); // Optional: Add to back stack for navigation
         fragmentTransaction.commit();
-        resetBottomSheet();
+        if (bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+            bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        }
 
     }
-    private void resetBottomSheet() {
-        BottomSheetBehavior<View> bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.sheet));
-        bottomSheetBehavior.setPeekHeight(490);
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-    }
+
 }
