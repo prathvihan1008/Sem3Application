@@ -8,4 +8,6 @@
     <string name="previous_track">Previous Track</string>
     <string name="rewind">Rewind</string>
     <string name="pull_up">pull up</string>
+    <string name="steps_label">Steps:</string>
+    <string name="timer_format">00:%02d</string>
 </resources>

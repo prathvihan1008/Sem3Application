@@ -1,18 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#000000">
 
+    <!-- ImageView for Setting Goal -->
+
+
+    <!-- Circular arrangement of TextViews and their units -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Distance Covered TextView -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/tvUnitDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="m"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Calories Burnt TextView -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/tvUnitCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cal"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Number of Steps TextView -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/tvUnitSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="steps"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- activity_main.xml -->
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <!-- Goal Image -->
+        <ImageView
+            android:id="@+id/imageViewGoal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/goal"
+            android:layout_gravity="center"/>
+
+        <!-- Title -->
+
+
+        <!-- Step Goal Input -->
+        <EditText
+            android:id="@+id/editTextStepGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Step Goal"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:textColorHint="@color/blue"
+            android:layout_marginBottom="0dp"/>
+
+        <ImageView
+            android:id="@+id/imageViewsteps"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/steps"
+            android:layout_gravity="center"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    <!-- Timer TextView -->
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="218dp"
-        android:layout_height="188dp"
-        android:text="Jogging"
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:textColor="#FFFFFF"
         android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="50dp"/>
+    <TextView
+        android:id="@+id/tvUnittime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="min"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+    <!-- Pause/Resume Button -->
+    <!-- Start Running TextView -->
+    <!-- CardView to contain TextView and ImageView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="8dp"
+        app:cardUseCompatPadding="true"
+        android:padding="3dp">
+
+        <!-- Horizontal LinearLayout -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingHorizontal="30dp">
+
+            <ImageView
+                android:id="@+id/stopbtn"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/stop_svgrepo_com"
+                android:clickable="true"
+                android:onClick="onPauseResumeClick"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"/>
+
+            <!-- ImageView for Pause/Resume -->
+            <ImageView
+                android:id="@+id/ivPauseResume"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/resume"
+                android:clickable="true"
+                android:onClick="onPauseResumeClick"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"/> <!-- Weight is set to 1 -->
+
+            <!-- Start Running TextView -->
+            <TextView
+                android:id="@+id/tvStartRunning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Jogging"
+                android:textColor="#AD583E3E"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="1"/> <!-- Weight is set to 1 -->
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
+
+</LinearLayout>

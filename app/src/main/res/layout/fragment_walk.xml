@@ -2,10 +2,13 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:name="com.example.sem3application.fragments.WalkFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    tools:context="com.example.sem3application.fragments.WalkFragment"
     android:background="#000000">
 
     <!-- ImageView for Setting Goal -->
@@ -144,6 +147,20 @@
     </LinearLayout>
 
 
+    <ProgressBar
+        android:id="@+id/progressBarGoal"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progress_bar"/>
+
+
+
+
+
 
 
 
@@ -195,7 +212,8 @@
                 android:layout_height="45dp"
                 android:src="@drawable/stop_svgrepo_com"
                 android:clickable="true"
-                android:onClick="onPauseResumeClick"
+
+
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"/>
@@ -207,8 +225,9 @@
                 android:layout_height="45dp"
                 android:src="@drawable/resume"
                 android:clickable="true"
-                android:onClick="onPauseResumeClick"
+
                 android:layout_gravity="center_vertical"
+
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"/> <!-- Weight is set to 1 -->
 
@@ -217,7 +236,7 @@
                 android:id="@+id/tvStartRunning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Running"
+                android:text="Start Walking"
                 android:textColor="#AD583E3E"
                 android:textSize="20sp"
                 android:gravity="center"
