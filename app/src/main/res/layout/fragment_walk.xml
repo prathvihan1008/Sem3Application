@@ -54,9 +54,11 @@
                         android:layout_height="25dp"
                         android:src="@drawable/steps"
                         android:layout_gravity="center_vertical"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        android:layout_marginRight="23dp"/>
                     <TextView
                         android:id="@+id/steps"
+                        android:text="0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#00FFBF"
@@ -65,6 +67,18 @@
                     android:layout_weight="1"
                     android:textStyle="bold" />
                 </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/goal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
 
 
@@ -77,6 +91,7 @@
                     android:inputType="number"
                     android:textColorHint="#FF163770"
                     android:textSize="20sp" />
+            </LinearLayout>
 
             </LinearLayout>
 
@@ -104,19 +119,23 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/distance" />
+                        android:src="@drawable/distance"
+                        android:layout_marginRight="3dp"/>
 
                     <TextView
+                        android:id="@+id/distance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="125"
-                        android:textSize="20sp" />
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:layout_marginRight="10dp"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="km"
+                        android:text="miles"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -131,19 +150,22 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/calories" />
+                        android:src="@drawable/calories"
+                        android:layout_marginRight="5dp"/>
 
                     <TextView
+                        android:id="@+id/calories"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="25000"
-                        android:textSize="20sp" />
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:layout_marginRight="10dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="kcal"
+                        android:text="cal"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -233,7 +255,7 @@
 
                 <!-- Start Running TextView -->
                 <TextView
-                    android:id="@+id/tvStartRunning"
+                    android:id="@+id/notation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Start Walking"
